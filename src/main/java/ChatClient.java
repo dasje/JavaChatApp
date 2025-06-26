@@ -1,4 +1,3 @@
-package JavaChatApp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +9,7 @@ import java.util.function.Consumer;
 public class ChatClient {
 
     private Socket socket;
+    @SuppressWarnings("unused")
     private BufferedReader inputConsole;
     private PrintWriter out;
     private BufferedReader in;

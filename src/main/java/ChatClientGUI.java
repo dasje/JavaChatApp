@@ -1,4 +1,3 @@
-package JavaChatApp;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -6,13 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
-import javax.swing.text.JTextComponent;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,7 +36,8 @@ public class ChatClientGUI extends JFrame {
         messageArea.setBackground(backgroundColor);
         messageArea.setForeground(textColor);
         messageArea.setFont(textFont);
-        add(new JScrollPane(messageArea));
+        add(new JScrollPane(messageArea),BorderLayout.CENTER);
+        
 
         JTextArea hitEnterToSend = new JTextArea();
         hitEnterToSend.setFont(new Font("Arial", Font.PLAIN, 10));
@@ -56,7 +52,6 @@ public class ChatClientGUI extends JFrame {
             client.sendMessage(message);
             textField.setText("");
         });
-        add(textField);
 
         exitButton = new JButton("Exit");
         exitButton.setFont(buttonFont);
@@ -90,7 +85,9 @@ public class ChatClientGUI extends JFrame {
     }
 
     private void onMessageReceived(String message) {
-        SwingUtilities.invokeLater(() -> messageArea.append(message + "\n"));
+        System.out.println("onMessageReceived " + message);
+        SwingUtilities.invokeLater(() -> {
+            messageArea.append(message + "\n");});
     }
 
     public static void main(String[] args) {
